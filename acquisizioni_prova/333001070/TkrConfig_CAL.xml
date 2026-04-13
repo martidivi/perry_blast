@@ -1,0 +1,9 @@
+      <GTEM>
+	<GCCC ID='255'>
+          <!-- Disable all GCCCs -->
+          <configuration>0x8007075F</configuration>
+          <layer_mask_0>0xFFFFFFFF</layer_mask_0>
+          <layer_mask_1>0xFFFFFFFF</layer_mask_1>
+	  <event_timeouts>0x20</event_timeouts>
+        </GCCC>
+      </GTEM>

@@ -1,0 +1,55 @@
+<!-- Include copyright.xml -->
+<!-- created by hand -->
+<LATdoc name='Simple TEM Schema'>
+ <declarations>
+    <options>
+      <explicitBroadcastNodes>0</explicitBroadcastNodes>
+    </options>
+  </declarations>
+  <schema>
+    <GXBRD>
+      <GTWR ID='0'/>
+    </GXBRD>
+    <GLAT>
+      <GTEM ID='0'>
+        <GCCC ID='0-3'/>
+        <GTCC ID='0-1'>
+          <GTRC ID='0-2'>
+            <GTFE ID='0-23'/>
+          </GTRC>
+        </GTCC>
+        <GTCC ID='2-3'>
+          <GTRC ID='0-2'>
+            <GTFE ID='0-23'/>
+          </GTRC>
+        </GTCC>
+        <GTCC ID='4-5'>
+          <GTRC ID='0-1'>
+            <GTFE ID='0-23'/>
+          </GTRC>
+        </GTCC>
+        <GTCC ID='6-7'>
+          <GTRC ID='0-1'>
+            <GTFE ID='0-23'/>
+          </GTRC>
+        </GTCC>
+        <GTIC/>
+      </GTEM>
+    </GLAT>
+  </schema>
+    
+<configuration>
+    <GLAT>
+      <GTEM ID ='0'>
+	<!-- removing TCC 3 or you will have lots of errors -->
+        <data_masks>0x1008</data_masks>
+      </GTEM>
+      <include filename = '$TKR_ROOT/TkrSchema/TkrConfig_CAL.xml'/>
+      <include filename = '$TKR_ROOT/TkrSchema/TkrConfig_TKR_nocc3.xml'/>
+    </GLAT>
+</configuration>
+<include filename='$ONLINE_ROOT/LATTE/repos/envMonConfigNewTEM.xml'/>
+<include filename='$TKR_ROOT/TkrSchema/TkrHWDefault.xml'/>
+    
+<include filename='$TKR_ROOT/TkrSchema/TkrHotStrips.xml'/>
+</LATdoc>

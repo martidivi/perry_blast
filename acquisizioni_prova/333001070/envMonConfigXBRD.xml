@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--                                                                         -->
+<!--  Facility:                                                              -->
+<!--      Online                                                             -->
+<!--                                                                         -->
+<!--  Abstract:                                                              -->
+<!--      Configuration for environmental monitoring                         -->
+<!--                                                                         -->
+<!--  Author:                                                                -->
+<!--      S. Tuvi, SLAC - GLAST I&T/Online                                   -->
+<!--                                                                         -->
+<!--  History:                                                               -->
+<!--      Feb 10, 2003 - S. Tuvi - Created                                   -->
+<!--                                                                         -->
+<!--  Copyright:                                                             -->
+<!--                              Copyright 2002                             -->
+<!--                                    by                                   -->
+<!--                       The Board of Trustees of the                      -->
+<!--                    Leland Stanford Junior University.                   -->
+<!--                           All rights reserved.                          -->
+<!--                                                                         -->
+<!-- Include copyright.xml -->
+<GXBRD>
+  <GTWR ID='0-15'>
+    <adc_ps_temp_0 egu="Temperature"/>
+    <adc_ps_temp_1 egu="Temperature"/>
+    <adc_tem_temp_0 egu="Temperature"/>
+    <adc_tem_temp_1 egu="Temperature"/>
+    <adc_tem_voltage_0 egu="TEM 3.3 Voltage"/>
+    <adc_tem_voltage_1 egu="TEM 3.3 Voltage"/>
+  </GTWR>
+</GXBRD>

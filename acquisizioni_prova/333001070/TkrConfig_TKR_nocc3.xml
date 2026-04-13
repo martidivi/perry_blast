@@ -1,0 +1,68 @@
+      <GTEM>
+        <GTCC ID='255'>
+          <!-- Mask all GTRCs on GTCCs -->
+          <configuration>0xC8053820L</configuration>
+          <input_mask>0x301ff</input_mask>
+          <event_timeouts>0x3FFF</event_timeouts>
+        </GTCC>
+        <GTCC ID='0-1'>
+          <configuration>0xB0053820L</configuration>
+          <input_mask>0x1F8</input_mask>
+        </GTCC>
+        <GTCC ID='2'>
+          <configuration>0xB0053820L</configuration>
+          <input_mask>0x1F8</input_mask>
+        </GTCC>
+        <GTCC ID='3'>
+          <configuration>0xC8053820L</configuration>
+          <input_mask>0x301ff</input_mask>
+        </GTCC>
+        <GTCC ID='4-5'>
+          <configuration>0xB8053820L</configuration>
+          <input_mask>0x1FC</input_mask>
+        </GTCC>
+        <GTCC ID='6-7'>
+          <configuration>0xB8053820L</configuration>
+          <input_mask>0x1FC</input_mask>
+        </GTCC>
+        <GTCC ID='255'>
+          <GTRC ID='255'>
+            <cmd_reset>1</cmd_reset>
+              <GTFE ID='255'>
+                <!-- Reset all GTFE masks -->
+                <trig_mask>0x0L</trig_mask>
+                <data_mask>0x0L</data_mask>
+                <calib_mask>0x0L</calib_mask>
+              </GTFE>
+          </GTRC>
+          <!-- broadcast standard split point 12 FEs each side on all GTRCs -->
+          <GTRC ID='255'>
+            <!-- OR_STRETCH = 0 (disabled), TOT_EN = 1 (wait for TOT) -->
+            <csr>0x2E020063FL</csr>
+              <GTFE ID='0-10'>
+                <mode>0x0</mode>
+              </GTFE>
+              <GTFE ID='11'>
+                <mode>0x1</mode>
+              </GTFE>
+              <GTFE ID='12'>
+                <mode>0x3</mode>
+              </GTFE>
+              <GTFE ID='13-23'>
+                <mode>0x2</mode>
+              </GTFE>
+          </GTRC>
+        </GTCC>
+        <GTCC ID='2'>
+          <GTRC ID='0-2'>
+            <!-- GTFE_CNT, bit 11-7, set to 24-->
+	    <csr>0x2E0200C3FL</csr>
+              <GTFE ID='0'>
+                <mode>0x3</mode>
+              </GTFE>
+              <GTFE ID='1-23'>
+                <mode>0x2</mode>
+              </GTFE>
+          </GTRC>
+        </GTCC>
+      </GTEM>

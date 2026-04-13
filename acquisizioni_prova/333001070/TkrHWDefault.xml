@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!-- created by INFN database - 03/01/2005 12.52.04 -->
+<opaque name='TkrHardwareConfig'>
+  <egseID>1</egseID>
+  <type>stack</type>
+  <tower temId='0'>
+    <layer id='Y0' disabled='0' populated='1'>
+      <mcm>M39t</mcm>
+    </layer>
+    <layer id='Y2' disabled='0' populated='1'>
+      <mcm>L507t</mcm>
+    </layer>
+    <layer id='Y4' disabled='0' populated='1'>
+      <mcm>L503t</mcm>
+    </layer>
+    <layer id='Y1' disabled='0' populated='1'>
+      <mcm>L507b</mcm>
+    </layer>
+    <layer id='Y3' disabled='0' populated='1'>
+      <mcm>L503b</mcm>
+    </layer>        
+    <layer id='X0' disabled='0' populated='1'>
+      <mcm>L502b</mcm>
+    </layer>
+    <layer id='X1' disabled='0' populated='1'>
+      <mcm>L502t</mcm>
+    </layer>
+    <layer id='X2' disabled='0' populated='1'>
+      <mcm>L508b</mcm>
+    </layer>
+    <layer id='X3' disabled='0' populated='1'>
+      <mcm>L508t</mcm>
+    </layer>
+    <layer id='X4' disabled='0' populated='1'>
+      <mcm>T22</mcm>
+    </layer>
+  </tower>
+</opaque>

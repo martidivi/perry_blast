@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--                                                                         -->
+<!--  Facility:                                                              -->
+<!--      Online                                                             -->
+<!--                                                                         -->
+<!--  Abstract:                                                              -->
+<!--      Configuration for environmental monitoring                         -->
+<!--                                                                         -->
+<!--  Author:                                                                -->
+<!--      S. Tuvi, SLAC - GLAST I&T/Online                                   -->
+<!--                                                                         -->
+<!--  History:                                                               -->
+<!--      Feb 10, 2003 - S. Tuvi - Created                                   -->
+<!--                                                                         -->
+<!--  Copyright:                                                             -->
+<!--                              Copyright 2002                             -->
+<!--                                    by                                   -->
+<!--                       The Board of Trustees of the                      -->
+<!--                    Leland Stanford Junior University.                   -->
+<!--                           All rights reserved.                          -->
+<!--                                                                         -->
+<!-- Include copyright.xml -->
+<configuration name='Environmental Monitoring EGUs (new TEM)' version='1.0'>
+  <declarations>
+    <options>
+      <skipTemOverrides>1</skipTemOverrides>
+    </options>
+  </declarations>
+  <egus>
+    <egu name="TEM 3.3 Voltage">
+      <class>LATTE.database.gEGU.GEGU_linear</class>
+      <parameters>
+        <slope>0.001221</slope>
+        <intercept>0.0</intercept>
+        <units>V</units>
+      </parameters>
+    </egu>
+    <egu name="TEM Current">
+      <class>LATTE.database.gEGU.GEGU_linear</class>
+      <parameters>
+        <slope>0.040357</slope>
+        <intercept>0.0</intercept>
+        <units>A</units>
+      </parameters>
+    </egu>
+    <egu name="CAL Digital 3.3 Voltage">
+      <class>LATTE.database.gEGU.GEGU_linear</class>
+      <parameters>
+        <slope>0.001221</slope>
+        <intercept>0.0</intercept>
+        <units>V</units>
+      </parameters>
+    </egu>
+    <egu name="CAL Analog 3.3 Voltage">
+      <class>LATTE.database.gEGU.GEGU_linear</class>
+      <parameters>
+        <slope>0.001221</slope>
+        <intercept>0.0</intercept>
+        <units>V</units>
+      </parameters>
+    </egu>
+    <egu name="TKR Digital 2.5 Voltage">
+      <class>LATTE.database.gEGU.GEGU_linear</class>
+      <parameters>
+        <slope>0.000916</slope>
+        <intercept>0.0</intercept>
+        <units>V</units>
+      </parameters>
+    </egu>
+    <egu name="TKR Analog 2.5 Voltage">
+      <class>LATTE.database.gEGU.GEGU_linear</class>
+      <parameters>
+        <slope>0.000916</slope>
+        <intercept>0.0</intercept>
+        <units>V</units>
+      </parameters>
+    </egu>
+    <egu name="TKR Analog 1.5 Voltage">
+      <class>LATTE.database.gEGU.GEGU_linear</class>
+      <parameters>
+        <slope>0.000766</slope>
+        <intercept>0.0</intercept>
+        <units>V</units>
+      </parameters>
+    </egu>
+    <egu name="CAL Bias Voltage">
+      <class>LATTE.database.gEGU.GEGU_linear</class>
+      <parameters>
+        <slope>0.06166</slope>
+        <intercept>0.0</intercept>
+        <units>V</units>
+      </parameters>
+    </egu>
+    <egu name="CAL Bias Current">
+      <class>LATTE.database.gEGU.GEGU_linear</class>
+      <parameters>
+        <slope>0.01209</slope>
+        <intercept>0.0</intercept>
+        <units>mA</units>
+      </parameters>
+    </egu>
+    <egu name="TKR Bias Voltage">
+      <class>LATTE.database.gEGU.GEGU_linear</class>
+      <parameters>
+        <slope>0.06166</slope>
+        <intercept>0.0</intercept>
+        <units>V</units>
+      </parameters>
+    </egu>
+    <egu name="TKR Bias Current">
+      <class>LATTE.database.gEGU.GEGU_linear</class>
+      <parameters>
+        <slope>0.01209</slope>
+        <intercept>0.0</intercept>
+        <units>mA</units>
+      </parameters>
+    </egu>
+    <egu name="28V Voltage">
+      <class>LATTE.database.gEGU.GEGU_linear</class>
+      <parameters>
+        <slope>0.008071</slope>
+        <intercept>0.0</intercept>
+        <units>V</units>
+      </parameters>
+    </egu>
+    <egu name="Temperature">
+      <class>LATTE.database.gEGU.GEGU_poly3</class>
+      <parameters>
+        <coeff0>-2.1529</coeff0>
+        <coeff1>0.0176472</coeff1>
+        <coeff2>0.00000228441</coeff2>
+        <coeff3>0.000000004006271</coeff3>
+        <offset>2000</offset>
+        <units>C</units>
+      </parameters>
+    </egu>
+  </egus>
+  
+  <GXBRD>
+    <include filename="$ONLINE_ROOT/LATTE/repos/envMonConfigXBRD.xml"/>
+  </GXBRD>
+  <GLAT>
+    <GTEM ID='0-15'>
+      <GTIC>
+        <adc_tkr_digital_2_5v egu="TKR Digital 2.5 Voltage"/>
+        <psd_tkr_bias_i egu="TKR Bias Current"/>
+        <adc_tkr_analog_a_1_5v egu="TKR Analog 1.5 Voltage"/>
+        <psd_cal_bias_i egu="CAL Bias Current"/>
+        <adc_tkr_analog_b_2_5v egu="TKR Analog 2.5 Voltage"/>
+        <psd_tem_i egu="TEM Current"/>
+        <adc_tkr_bias_v0 egu="TKR Bias Voltage"/>
+
+        <adc_cal_digital_3_3v egu="CAL Digital 3.3 Voltage"/>
+        <adc_tkr_bias_v1 egu="TKR Bias Voltage"/>
+        <adc_cal_analog_3_3v egu="CAL Analog 3.3 Voltage"/>
+        <adc_cal_bias_v1 egu="CAL Bias Voltage"/>
+        <adc_cal_bias_v0 egu="CAL Bias Voltage"/>
+        <adc_28_v0 egu="28V Voltage"/>
+        <adc_tem_digital_3_3v egu="TEM 3.3 Voltage"/>
+        <adc_28_v1 egu="28V Voltage"/>
+
+        <adc_afee0_t0  egu="Temperature"/>
+        <adc_afee0_t1  egu="Temperature"/>
+        <adc_afee1_t0  egu="Temperature"/>
+        <adc_afee1_t1  egu="Temperature"/>
+        <adc_afee2_t0  egu="Temperature"/>
+        <adc_afee2_t1  egu="Temperature"/>
+        <adc_afee3_t0  egu="Temperature"/>
+        <adc_afee3_t1  egu="Temperature"/>
+        <adc_tkr_c0_t0 egu="Temperature"/>
+        <adc_tkr_c0_t1 egu="Temperature"/>
+        <adc_tkr_c1_t0 egu="Temperature"/>
+        <adc_tkr_c1_t1 egu="Temperature"/>
+        <adc_tkr_c2_t0 egu="Temperature"/>
+        <adc_tkr_c2_t1 egu="Temperature"/>
+        <adc_tkr_c3_t0 egu="Temperature"/>
+        <adc_tkr_c3_t1 egu="Temperature"/>
+        <adc_tkr_c4_t0 egu="Temperature"/>
+        <adc_tkr_c4_t1 egu="Temperature"/>
+        <adc_tkr_c5_t0 egu="Temperature"/>
+        <adc_tkr_c5_t1 egu="Temperature"/>
+        <adc_tkr_c6_t0 egu="Temperature"/>
+        <adc_tkr_c6_t1 egu="Temperature"/>
+        <adc_tkr_c7_t0 egu="Temperature"/>
+        <adc_tkr_c7_t1 egu="Temperature"/>
+      </GTIC>
+    </GTEM>
+  </GLAT>
+ </configuration>
