@@ -28,6 +28,10 @@ int EdgeWidth = 1;
 double StripPitch = .228;
 double LadderSeparation = .220;
 std::vector<std::string> layerNames = {"Y0", "X0", "X1", "Y1", "Y2", "X2", "X3", "Y3", "Y4", "X4"}; // vettore di stringhe per i layer
+std::map<std::string, int> layerIndex = {
+    {"Y0",0}, {"X0",1}, {"X1",2}, {"Y1",3}, {"Y2",4},
+    {"X2",5}, {"X3",6}, {"Y3",7}, {"Y4",8}, {"X4",9}
+}; // mappa per gli indici, giusto per non stare a smattare
 double z_coords[10] = {0, 25, 75, 100, 150, 175, 225, 250, 300, 325}; // in mm
 
 // --- FUNZIONI PER CALCOLARE LA COORDINATE x,y e z IN mm
@@ -265,6 +269,68 @@ void DrawEvent3D(Event& ev, double mx, double qx, double my, double qy, int even
         DrawPlane(getZ(i));
     }
     c3d->Update();
+}
+
+void LayerEfficiency(){
+    // definizione layer di trigger. dentro alle {,}, il primo è il layer di cui voglio studiare l'efficienza e il secondo è uno dei due layer di trigger. si accede con trigger1["layer di cui voglio studiare l'efficienza"] e l'analogo col trigger2
+    std::map<std::string, std::string> trigger1 = {
+        {"X0", "Y4"}, {"X1", "Y0"}, {"X2", "Y2"}, {"X3", "Y2"}, {"X4", "Y0"},
+        {"Y0", "X0"}, {"Y1", "X1"}, {"Y2", "X1"}, {"Y3", "X3"}, {"Y4", "X3"}
+    };
+    std::map<std::string, std::string> trigger2 = {
+        {"X0", "Y0"}, {"X1", "Y1"}, {"X2", "Y3"}, {"X3", "Y3"}, {"X4", "Y4"},
+        {"Y0", "X4"}, {"Y1", "X2"}, {"Y2", "X2"}, {"Y3", "X4"}, {"Y4", "X4"}
+    };
+    std::map<std::string, std::string> trigger3 = { // solo per layer estremali
+        {"X4", "Y2"},
+        {"Y0", "X2"}
+    };
+   
+    // loop sui layer da testare
+    for(int l = 0; l < 10; l++){
+        std::string layerName = layerNames[l];
+        int nTotal = 0;   // eventi con trigger attivo, inizializzati a 0
+        int nHit = 0;     // eventi con trigger attivo e hit sul layer testato, inizializzati a 0
+        
+        // per ogni evento
+        for(Event &ev : events){
+            // controlla se i layer di trigger sono colpiti
+            bool hit1 = ev.clustersPerLayer[ layerIndex[trigger1[layerName]] ].size() > 0;
+            bool hit2 = ev.clustersPerLayer[ layerIndex[trigger2[layerName]] ].size() > 0;
+            bool hitLayer = ev.clustersPerLayer[ layerIndex[layerName] ].size() > 0;
+            
+            if(layerName != "Y0" || layerName != "X4"){
+                if( hit1 && hit2 ){ // se sì, incrementa nTotal
+                nTotal++;
+                }
+                // controlla se il layer testato è colpito compatibilmente con la traccia (STRIP MASCHERATE?????)
+                if( hit1 && hit2 && hitLayer ){
+                    // se sì, incrementa nHit
+                    nHit++;
+                }
+            }
+            else{ // per layer estremali aggiungo ulteriore layer di trigger
+                bool hit3 = ev.clustersPerLayer[ layerIndex[trigger3[layerName]] ].size() > 0;
+                if( hit1 && hit2 && hit3 ){ // se sì, incrementa nTotal
+                nTotal++;
+                }
+                // controlla se il layer testato è colpito compatibilmente con la traccia (STRIP MASCHERATE?????)
+                if( hit1 && hit2 && hit3 && hitLayer ){
+                    // se sì, incrementa nHit
+                    nHit++;
+                }
+
+            }
+        }
+        // efficienza = nHit / nTotal
+        double eff = (double)nHit / nTotal;
+        std::cout << "nTotal =" << nTotal << " nHit =" << nHit << "\n";
+        std::cout << "--------";
+        std::cout << "efficienza layer '" << layerNames[l] << "' = " << eff << "\n";
+        std::cout << "--------";
+        std::cout << "--------";
+
+    }
 }
 
 // --- FUNZIONE PER RICOSTRUIRE LE TRACCE
